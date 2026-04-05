@@ -146,14 +146,16 @@
             padding: 1.8rem 2rem;
         }
 
+        /* Header with menu button */
         .header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: center;
             flex-wrap: wrap;
             margin-bottom: 2rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding-bottom: 1rem;
+            position: relative;
         }
 
         .title h1 {
@@ -171,12 +173,92 @@
             margin-top: 0.2rem;
         }
 
+        /* 3 lines menu button */
+        .menu-btn {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 10px 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 20;
+        }
+
+        .menu-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 160, 210, 0.6);
+        }
+
+        .menu-line {
+            width: 28px;
+            height: 3px;
+            background: linear-gradient(90deg, #ffb6d9, #b9a0ff);
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        /* Dropdown menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background: rgba(10, 15, 25, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            width: 200px;
+            overflow: hidden;
+            z-index: 100;
+            transform: scaleY(0);
+            transform-origin: top;
+            opacity: 0;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            pointer-events: none;
+        }
+
+        .dropdown-menu.show {
+            transform: scaleY(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .menu-option {
+            padding: 14px 20px;
+            color: #f0eef7;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-option:last-child {
+            border-bottom: none;
+        }
+
+        .menu-option:hover {
+            background: rgba(120, 80, 200, 0.4);
+        }
+
+        .menu-option i {
+            font-style: normal;
+            font-size: 1.2rem;
+        }
+
         .status-badge {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
             padding: 0.4rem 1rem;
             border-radius: 40px;
             font-size: 0.8rem;
+            font-weight: 500;
             color: #bbf0ff;
             border: 1px solid rgba(120, 200, 255, 0.5);
         }
@@ -347,6 +429,26 @@
             opacity: 0.4;
             pointer-events: none;
         }
+
+        @media (max-width: 700px) {
+            .dashboard {
+                padding: 1.2rem;
+            }
+            .preset-card {
+                width: 100%;
+                max-width: 340px;
+            }
+            .title h1 {
+                font-size: 1.3rem;
+            }
+            .menu-btn {
+                padding: 6px 10px;
+            }
+            .menu-line {
+                width: 22px;
+                height: 2.5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -368,7 +470,24 @@
             <h1>⚡ ALIGHT MOTION HUB</h1>
             <p>dynamic presets • animated background • fluid energy</p>
         </div>
-        <div class="status-badge">🎬 motion active</div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <div class="status-badge">🎬 motion active</div>
+            <!-- Three lines menu button -->
+            <div class="menu-btn" id="menuBtn">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+        <!-- Dropdown menu -->
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="menu-option" id="optionTikTok">
+                <i>📱</i> View TikTok
+            </div>
+            <div class="menu-option" id="optionGetLinks">
+                <i>🔗</i> Get links
+            </div>
+        </div>
     </div>
 
     <div class="presets-grid">
@@ -402,7 +521,7 @@
             <button class="tiny-icon-btn" id="copyImgLinkBtn">🖼️ Copy image with link</button>
         </div>
     </div>
-    <div id="actionFeedback" class="toast-msg">✨ ready — click any preset button to open link</div>
+    <div id="actionFeedback" class="toast-msg">✨ ready — click ☰ menu for TikTok & links</div>
     <footer>🎞️ Megacollab 100kang • Roed!! When Yah Rame • Mep With Waves • My Drive • Doop effect</footer>
 </main>
 
@@ -412,9 +531,12 @@
     const PRESET_41_PROJECT = "https://alight.link/SPCogfKyqc83GBL59";
     const PRESET_41_XML = "https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk";
     
-    // Preset 42 - Replace these with your actual preset 42 links when you have them
+    // Preset 42 - Replace these with your actual preset 42 links
     const PRESET_42_PROJECT = "https://alight.link/GkbxTTCw1dAmdeei8";
     const PRESET_42_XML = "https://drive.google.com/file/d/11eS-zuOOgFx49WPMf42JLUcyW6s1aL4k/view?usp=drivesdk";
+    
+    // TikTok link
+    const TIKTOK_URL = "https://www.tiktok.com/@doop_edit_preset";
     
     // Get button elements
     const btn41Project = document.getElementById('openPreset41Project');
@@ -426,7 +548,18 @@
     const undoBtn = document.getElementById('undoBtn');
     const feedback = document.getElementById('actionFeedback');
     
+    // Menu elements
+    const menuBtn = document.getElementById('menuBtn');
+    const dropdown = document.getElementById('dropdownMenu');
+    const optionTikTok = document.getElementById('optionTikTok');
+    const optionGetLinks = document.getElementById('optionGetLinks');
+    
     let linksDisabled = false;
+    
+    // Close dropdown when clicking outside
+    function closeDropdown() {
+        dropdown.classList.remove('show');
+    }
     
     function showMessage(msg, isError = false) {
         feedback.textContent = msg;
@@ -434,9 +567,9 @@
         setTimeout(() => {
             if (feedback.textContent === msg) {
                 feedback.style.background = 'rgba(0,0,0,0.7)';
-                feedback.textContent = '✨ ready — click any preset button to open link';
+                feedback.textContent = '✨ ready — click ☰ menu for TikTok & links';
             }
-        }, 2000);
+        }, 2200);
     }
     
     function openLink(url, name) {
@@ -450,7 +583,6 @@
             return;
         }
         
-        // This actually opens the link in a new tab
         window.open(url, '_blank');
         showMessage(`✅ Opening ${name}...`, false);
     }
@@ -494,21 +626,13 @@
         }
     };
     
-    // Extra features
-    document.getElementById('quickShareBtn').onclick = () => {
-        navigator.clipboard.writeText(`Alight Motion Preset 41: ${PRESET_41_PROJECT}`);
-        showMessage("📲 Preset link copied to clipboard!", false);
-    };
+    // ========== MENU FUNCTIONALITY ==========
+    // Toggle dropdown on menu button click
+    menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+    });
     
-    document.getElementById('qrMockBtn').onclick = () => {
-        navigator.clipboard.writeText(`AM Preset 41\nProject: ${PRESET_41_PROJECT}\nXML: ${PRESET_41_XML}`);
-        showMessage("📱 QR data copied (mock)", false);
-    };
-    
-    document.getElementById('copyImgLinkBtn').onclick = () => {
-        navigator.clipboard.writeText(`🎬 Alight Motion Preset\n${PRESET_41_PROJECT}`);
-        showMessage("🖼️ Link copied!", false);
-    };
-</script>
-</body>
-</html>
+    // Close dropdown when clicking anywhere else on the page
+    document.addEventListener('click', (e) => {
+        if (!menuBt
