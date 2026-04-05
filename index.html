@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* ---------- ALIGHT MOTION BACKGROUND (Dynamic Fluid + Glow Waves) ---------- */
+        /* ALIGHT MOTION BACKGROUND */
         .alight-motion-bg {
             position: fixed;
             top: 0;
@@ -133,7 +133,6 @@
             animation: grainShift 6s infinite alternate;
         }
 
-        /* main card — glassmorphic panel */
         .dashboard {
             position: relative;
             z-index: 10;
@@ -143,9 +142,8 @@
             backdrop-filter: blur(14px);
             border-radius: 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
             padding: 1.8rem 2rem;
-            transition: all 0.3s ease;
         }
 
         .header {
@@ -165,7 +163,6 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
         }
 
         .title p {
@@ -180,7 +177,6 @@
             padding: 0.4rem 1rem;
             border-radius: 40px;
             font-size: 0.8rem;
-            font-weight: 500;
             color: #bbf0ff;
             border: 1px solid rgba(120, 200, 255, 0.5);
         }
@@ -190,7 +186,7 @@
             flex-wrap: wrap;
             gap: 1.8rem;
             justify-content: center;
-            margin: 2rem 0 2rem;
+            margin: 2rem 0;
         }
 
         .preset-card {
@@ -200,14 +196,11 @@
             padding: 1.5rem 1.8rem;
             width: 280px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.25s ease, box-shadow 0.3s;
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.25s ease;
         }
 
         .preset-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(255, 160, 210, 0.6);
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
             background: rgba(20, 28, 40, 0.65);
         }
 
@@ -215,19 +208,7 @@
             font-size: 1.6rem;
             font-weight: 700;
             color: #f0eef7;
-            letter-spacing: -0.3px;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .preset-title span {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 0.2rem 0.5rem;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 400;
         }
 
         .button-group {
@@ -238,38 +219,32 @@
         }
 
         .btn {
-            background: rgba(30, 40, 55, 0.9);
             border: none;
             padding: 0.6rem 1rem;
             border-radius: 2rem;
             font-weight: 500;
             font-size: 0.8rem;
-            color: #eef5ff;
             cursor: pointer;
-            transition: all 0.2s;
-            backdrop-filter: blur(4px);
-            border: 0.5px solid rgba(255,255,240,0.3);
             font-family: inherit;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            display: inline-block;
+            text-align: center;
+            flex: 1;
         }
 
         .btn-primary {
             background: linear-gradient(105deg, #3a2c6b, #4e3a8e);
             color: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .btn-primary:hover {
             background: linear-gradient(105deg, #5b44a0, #6a4ec7);
-            transform: scale(0.97);
         }
 
         .btn-secondary {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 140, 200, 0.5);
+            color: white;
         }
 
         .btn-secondary:hover {
@@ -294,17 +269,12 @@
             border-radius: 3rem;
             font-weight: 600;
             color: #ffe0e7;
-            font-size: 0.9rem;
             cursor: pointer;
-            transition: 0.2s;
-            backdrop-filter: blur(6px);
         }
 
         .close-link-btn:hover {
             background: #ff4d6d;
             color: white;
-            border-color: white;
-            box-shadow: 0 0 12px rgba(255, 70, 100, 0.6);
         }
 
         .undo-btn {
@@ -314,13 +284,11 @@
             border-radius: 3rem;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.2s;
             color: #cbe4fe;
         }
 
         .undo-btn:hover {
             background: #2c3e66;
-            color: white;
         }
 
         .toast-msg {
@@ -330,6 +298,7 @@
             border-radius: 50px;
             color: #b9ffd0;
             text-align: center;
+            margin-top: 12px;
         }
 
         .extra-actions {
@@ -345,11 +314,6 @@
             color: #cfdcff;
             border: 0.5px solid rgba(255,255,200,0.3);
             cursor: pointer;
-            transition: 0.1s;
-        }
-
-        .tiny-icon-btn:hover {
-            background: rgba(255, 200, 255, 0.2);
         }
 
         footer {
@@ -359,40 +323,17 @@
             color: #99a7c2;
         }
 
-        @media (max-width: 700px) {
-            .dashboard {
-                padding: 1.2rem;
-            }
-            .preset-card {
-                width: 100%;
-                max-width: 340px;
-            }
-            .title h1 {
-                font-size: 1.5rem;
-            }
-        }
-
         @keyframes floatMotion {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                transform: translate(5%, 8%) scale(1.2);
-            }
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5%, 8%) scale(1.2); }
         }
 
         @keyframes waveSlide {
-            0% {
-                transform: translateX(-30%) rotate(var(--rot, 0deg));
-            }
-            100% {
-                transform: translateX(30%) rotate(var(--rot, 0deg));
-            }
+            0% { transform: translateX(-30%) rotate(var(--rot, 0deg)); }
+            100% { transform: translateX(30%) rotate(var(--rot, 0deg)); }
         }
 
-        .wave-strip {
-            --rot: 0deg;
-        }
+        .wave-strip { --rot: 0deg; }
         .wave-strip:nth-child(1) { --rot: 15deg; }
         .wave-strip:nth-child(2) { --rot: -8deg; }
         .wave-strip:nth-child(3) { --rot: 25deg; }
@@ -403,15 +344,13 @@
         }
 
         .btn-disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             pointer-events: none;
-            filter: grayscale(0.2);
         }
     </style>
 </head>
 <body>
 
-<!-- ALIGHT MOTION DYNAMIC BACKGROUND -->
 <div class="alight-motion-bg">
     <div class="motion-orb orb1"></div>
     <div class="motion-orb orb2"></div>
@@ -429,49 +368,31 @@
             <h1>⚡ ALIGHT MOTION HUB</h1>
             <p>dynamic presets • animated background • fluid energy</p>
         </div>
-        <div class="status-badge">
-            🎬 motion active
-        </div>
+        <div class="status-badge">🎬 motion active</div>
     </div>
 
-    <!-- Preset 41 & 42 with REAL links -->
     <div class="presets-grid">
-        <!-- Preset 41 card -->
+        <!-- Preset 41 -->
         <div class="preset-card">
-            <div class="preset-title">
-                🔥 Preset 41 <span>links</span>
-            </div>
+            <div class="preset-title">🔥 Preset 41</div>
             <div class="button-group">
-                <!-- 5MB Project link - opens alight.link -->
-                <a class="btn btn-primary" id="preset41ProjectBtn" href="#" target="_blank" rel="noopener noreferrer">
-                    📥 Download 5MB Project
-                </a>
-                <!-- XML link - opens Google Drive -->
-                <a class="btn btn-secondary" id="preset41XMLBtn" href="#" target="_blank" rel="noopener noreferrer">
-                    📄 Download XML
-                </a>
+                <button class="btn btn-primary" id="openPreset41Project">📥 Download 5MB Project</button>
+                <button class="btn btn-secondary" id="openPreset41XML">📄 Download XML</button>
             </div>
             <div style="margin-top: 12px; font-size: 0.7rem; color: #b3c7ff;">motion blur • hyper smooth</div>
         </div>
 
-        <!-- Preset 42 card (using same pattern but with generic working links as example, you can replace) -->
+        <!-- Preset 42 -->
         <div class="preset-card">
-            <div class="preset-title">
-                💎 Preset 42 <span>links</span>
-            </div>
+            <div class="preset-title">💎 Preset 42</div>
             <div class="button-group">
-                <a class="btn btn-primary" id="preset42ProjectBtn" href="#" target="_blank" rel="noopener noreferrer">
-                    📥 Download 5MB Project
-                </a>
-                <a class="btn btn-secondary" id="preset42XMLBtn" href="#" target="_blank" rel="noopener noreferrer">
-                    📄 Download XML
-                </a>
+                <button class="btn btn-primary" id="openPreset42Project">📥 Download 5MB Project</button>
+                <button class="btn btn-secondary" id="openPreset42XML">📄 Download XML</button>
             </div>
             <div style="margin-top: 12px; font-size: 0.7rem; color: #b3c7ff;">wave warp + glow effects</div>
         </div>
     </div>
 
-    <!-- Closed My Link Button + Undo + extra sharing simulation -->
     <div class="action-bar">
         <button id="closeLinkBtn" class="close-link-btn">🔗 Closed My Link Button</button>
         <button id="undoBtn" class="undo-btn">↩️ Undo</button>
@@ -481,125 +402,113 @@
             <button class="tiny-icon-btn" id="copyImgLinkBtn">🖼️ Copy image with link</button>
         </div>
     </div>
-    <div id="actionFeedback" class="toast-msg" style="margin-top: 12px;">✨ interactive ready — background flows with alight motion style</div>
-    <footer>
-        🎞️ Megacollab 100kang • Roed!! When Yah Rame • Mep With Waves • My Drive • Doop effect
-    </footer>
+    <div id="actionFeedback" class="toast-msg">✨ ready — click any preset button to open link</div>
+    <footer>🎞️ Megacollab 100kang • Roed!! When Yah Rame • Mep With Waves • My Drive • Doop effect</footer>
 </main>
 
 <script>
-    // ----- SPECIFIC LINKS PROVIDED BY USER -----
-    // Preset 41: 
-    // 5MB Project: https://alight.link/SPCogfKyqc83GBL59
-    // XML: https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk
+    // ========== YOUR LINKS ==========
+    // Preset 41 - Working links
+    const PRESET_41_PROJECT = "https://alight.link/SPCogfKyqc83GBL59";
+    const PRESET_41_XML = "https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk";
     
-    const PRESET_41_PROJECT_URL = "https://alight.link/SPCogfKyqc83GBL59";
-    const PRESET_41_XML_URL = "https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk";
+    // Preset 42 - Replace these with your actual preset 42 links when you have them
+    const PRESET_42_PROJECT = "https://alight.link/example42";
+    const PRESET_42_XML = "https://drive.google.com/file/d/example42";
     
-    // For Preset 42 - using functional demo links (alight motion official example + google drive placeholder)
-    // You can replace these with your actual preset 42 links later
-    const PRESET_42_PROJECT_URL = "https://alight.link/example42placeholder";  // Replace with actual preset42 5MB link
-    const PRESET_42_XML_URL = "https://drive.google.com/file/d/example42/view?usp=drivesdk";  // Replace with actual XML link
+    // Get button elements
+    const btn41Project = document.getElementById('openPreset41Project');
+    const btn41XML = document.getElementById('openPreset41XML');
+    const btn42Project = document.getElementById('openPreset42Project');
+    const btn42XML = document.getElementById('openPreset42XML');
     
-    // Get DOM elements
-    const preset41ProjectBtn = document.getElementById('preset41ProjectBtn');
-    const preset41XMLBtn = document.getElementById('preset41XMLBtn');
-    const preset42ProjectBtn = document.getElementById('preset42ProjectBtn');
-    const preset42XMLBtn = document.getElementById('preset42XMLBtn');
-    
-    const closeLinkBtn = document.getElementById('closeLinkBtn');
+    const closeBtn = document.getElementById('closeLinkBtn');
     const undoBtn = document.getElementById('undoBtn');
-    const feedbackDiv = document.getElementById('actionFeedback');
+    const feedback = document.getElementById('actionFeedback');
     
-    // State management for link blocking
-    let linksBlocked = false;
-    let previousBlockState = false;
+    let linksDisabled = false;
     
-    // Helper: show feedback message
     function showMessage(msg, isError = false) {
-        feedbackDiv.textContent = msg;
-        feedbackDiv.style.background = isError ? 'rgba(180, 40, 60, 0.8)' : 'rgba(0,0,0,0.75)';
-        feedbackDiv.style.backdropFilter = 'blur(12px)';
-        feedbackDiv.style.border = isError ? '1px solid #ff8080' : '1px solid #7effb0';
+        feedback.textContent = msg;
+        feedback.style.background = isError ? 'rgba(180, 40, 60, 0.8)' : 'rgba(0,0,0,0.75)';
         setTimeout(() => {
-            if(feedbackDiv.textContent === msg) {
-                feedbackDiv.style.background = 'rgba(0,0,0,0.7)';
-                feedbackDiv.style.border = 'none';
-                feedbackDiv.textContent = '✨ ready — background flowing';
+            if (feedback.textContent === msg) {
+                feedback.style.background = 'rgba(0,0,0,0.7)';
+                feedback.textContent = '✨ ready — click any preset button to open link';
             }
-        }, 2200);
+        }, 2000);
     }
     
-    // Function to open URL with block check
-    function openLink(url, linkType, presetNum) {
-        if (linksBlocked) {
-            showMessage(`🔒 Links are currently CLOSED by "Closed My Link Button". Press Undo to restore.`, true);
-            return false;
+    function openLink(url, name) {
+        if (linksDisabled) {
+            showMessage(`🔒 Links are CLOSED! Click "Undo" to enable them.`, true);
+            return;
         }
         
-        if (!url || url === "#") {
-            showMessage(`⚠️ Link for ${linkType} (Preset ${presetNum}) is not configured yet.`, true);
-            return false;
+        if (!url || url.includes("example")) {
+            showMessage(`⚠️ ${name} link not configured yet. Add your Preset 42 links.`, true);
+            return;
         }
         
-        // Open in new tab
-        window.open(url, '_blank', 'noopener,noreferrer');
-        showMessage(`🚀 Opening ${linkType} for Preset ${presetNum}...`, false);
-        return true;
+        // This actually opens the link in a new tab
+        window.open(url, '_blank');
+        showMessage(`✅ Opening ${name}...`, false);
     }
     
-    // Assign click handlers for preset 41
-    preset41ProjectBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openLink(PRESET_41_PROJECT_URL, "5MB Project", "41");
-    });
+    // Preset 41 buttons
+    btn41Project.onclick = () => openLink(PRESET_41_PROJECT, "Preset 41 Project (5MB)");
+    btn41XML.onclick = () => openLink(PRESET_41_XML, "Preset 41 XML");
     
-    preset41XMLBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openLink(PRESET_41_XML_URL, "XML File", "41");
-    });
+    // Preset 42 buttons
+    btn42Project.onclick = () => openLink(PRESET_42_PROJECT, "Preset 42 Project (5MB)");
+    btn42XML.onclick = () => openLink(PRESET_42_XML, "Preset 42 XML");
     
-    // Assign handlers for preset 42 (using placeholder links - replace with real ones)
-    preset42ProjectBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openLink(PRESET_42_PROJECT_URL, "5MB Project", "42");
-    });
-    
-    preset42XMLBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openLink(PRESET_42_XML_URL, "XML File", "42");
-    });
-    
-    // --- Closed My Link Button logic ---
-    function setLinksBlocked(blocked) {
-        linksBlocked = blocked;
-        const allLinkButtons = [preset41ProjectBtn, preset41XMLBtn, preset42ProjectBtn, preset42XMLBtn];
-        
-        allLinkButtons.forEach(btn => {
-            if (blocked) {
+    // Close/Undo functionality
+    function setLinksState(disabled) {
+        linksDisabled = disabled;
+        const btns = [btn41Project, btn41XML, btn42Project, btn42XML];
+        btns.forEach(btn => {
+            if (disabled) {
                 btn.classList.add('btn-disabled');
-                btn.style.pointerEvents = 'none';
-                btn.style.opacity = '0.5';
             } else {
                 btn.classList.remove('btn-disabled');
-                btn.style.pointerEvents = 'auto';
-                btn.style.opacity = '1';
             }
         });
     }
     
-    closeLinkBtn.addEventListener('click', () => {
-        if (!linksBlocked) {
-            previousBlockState = false;
-            setLinksBlocked(true);
-            showMessage("🔒 All preset links are now CLOSED. Use 'Undo' to re-enable them.", false);
+    closeBtn.onclick = () => {
+        if (!linksDisabled) {
+            setLinksState(true);
+            showMessage("🔒 All links are now CLOSED. Press Undo to re-enable.", false);
         } else {
-            showMessage("⚠️ Links are already closed. Press 'Undo' to restore access.", false);
+            showMessage("⚠️ Links are already closed!", true);
         }
-    });
+    };
     
-    // Undo functionality: restore links if they were closed
-    undoBtn.addEventListener('click', () => {
-        if (linksBlocked) {
-            setLinksBlocked(false);
-            showMessage("↩️ Undo: All downloa
+    undoBtn.onclick = () => {
+        if (linksDisabled) {
+            setLinksState(false);
+            showMessage("↩️ Links restored! You can now open presets.", false);
+        } else {
+            showMessage("✨ No links were closed. Nothing to undo.", false);
+        }
+    };
+    
+    // Extra features
+    document.getElementById('quickShareBtn').onclick = () => {
+        navigator.clipboard.writeText(`Alight Motion Preset 41: ${PRESET_41_PROJECT}`);
+        showMessage("📲 Preset link copied to clipboard!", false);
+    };
+    
+    document.getElementById('qrMockBtn').onclick = () => {
+        navigator.clipboard.writeText(`AM Preset 41\nProject: ${PRESET_41_PROJECT}\nXML: ${PRESET_41_XML}`);
+        showMessage("📱 QR data copied (mock)", false);
+    };
+    
+    document.getElementById('copyImgLinkBtn').onclick = () => {
+        navigator.clipboard.writeText(`🎬 Alight Motion Preset\n${PRESET_41_PROJECT}`);
+        showMessage("🖼️ Link copied!", false);
+    };
+</script>
+</body>
+</html>
