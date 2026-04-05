@@ -1,60 +1,74 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>TikTok Like Tool</title>
-    <style>
-        body {
-            background: black;
-            color: white;
-            text-align: center;
-            font-family: Arial;
-        }
-        input {
-            padding: 10px;
-            width: 300px;
-            border-radius: 5px;
-            border: none;
-        }
-        button {
-            padding: 10px 20px;
-            margin-top: 10px;
-            background: red;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLBB Top Up - Fast & Secure</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🔥 TikTok Like Tool</h1>
+    <div class="container">
+        <header>
+            <h1>Mobile Legends: Bang Bang</h1>
+            <p>Instant Diamond Top Up</p>
+        </header>
 
-<p>Paste your TikTok video link 👇</p>
+        <!-- Step 1: User ID -->
+        <section class="card">
+            <div class="step-circle">1</div>
+            <h3>Enter User ID</h3>
+            <div class="input-group">
+                <input type="number" id="userId" placeholder="User ID" required>
+                <input type="number" id="zoneId" placeholder="(Zone ID)" required>
+            </div>
+            <small>To find your User ID, click on your avatar in the top-left corner of the game main menu.</small>
+        </section>
 
-<input type="text" id="link" placeholder="Paste TikTok URL here">
+        <!-- Step 2: Select Diamonds -->
+        <section class="card">
+            <div class="step-circle">2</div>
+            <h3>Select Amount</h3>
+            <div class="grid-options" id="diamondGrid">
+                <div class="option" onclick="selectItem(this, 10)">
+                    <span>100 💎</span>
+                    <span class="price">$0.00</span>
+                </div>
+                <div class="option" onclick="selectItem(this, 50)">
+                    <span>28 💎</span>
+                    <span class="price">$0.75</span>
+                </div>
+                <div class="option active" onclick="selectItem(this, 150)">
+                    <span>85 💎</span>
+                    <span class="price">$2.10</span>
+                </div>
+                <div class="option" onclick="selectItem(this, 300)">
+                    <span>170 💎</span>
+                    <span class="price">$4.15</span>
+                </div>
+            </div>
+        </section>
 
-<br>
+        <!-- Step 3: Payment Method -->
+        <section class="card">
+            <div class="step-circle">3</div>
+            <h3>Select Payment</h3>
+            <div class="payment-list">
+                <label class="payment-item">
+                    <input type="radio" name="payment" value="visa" checked>
+                    <span>Credit/Debit Card</span>
+                </label>
+                <label class="payment-item">
+                    <input type="radio" name="payment" value="paypal">
+                    <span>PayPal</span>
+                </label>
+            </div>
+        </section>
 
-<button onclick="goToVideo()">❤️ Like Now</button>
+        <button class="buy-btn" onclick="processOrder()">Buy Now</button>
+    </div>
 
-<p id="status"></p>
-
-<script>
-function goToVideo() {
-    let link = document.getElementById("link").value;
-    let status = document.getElementById("status");
-
-    if (link === "") {
-        status.innerHTML = "❌ Please paste a link first!";
-        return;
-    }
-
-    status.innerHTML = "Opening TikTok... 🚀";
-
-    // Open TikTok video in new tab
-    window.open(link, "_blank");
-}
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
