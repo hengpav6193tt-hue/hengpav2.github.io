@@ -25,50 +25,27 @@
             </div>
             <small>To find your User ID, click on your avatar in the top-left corner of the game main menu.</small>
         </section>
-
-        <!-- Step 2: Select Diamonds -->
-        <section class="card">
-            <div class="step-circle">2</div>
-            <h3>Select Amount</h3>
-            <div class="grid-options" id="diamondGrid">
-                <div class="option" onclick="selectItem(this, 10)">
-                    <span>100 💎</span>
-                    <span class="price">$0.00</span>
-                </div>
-                <div class="option" onclick="selectItem(this, 50)">
-                    <span>28 💎</span>
-                    <span class="price">$0.75</span>
-                </div>
-                <div class="option active" onclick="selectItem(this, 150)">
-                    <span>85 💎</span>
-                    <span class="price">$2.10</span>
-                </div>
-                <div class="option" onclick="selectItem(this, 300)">
-                    <span>170 💎</span>
-                    <span class="price">$4.15</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Step 3: Payment Method -->
-        <section class="card">
-            <div class="step-circle">3</div>
-            <h3>Select Payment</h3>
-            <div class="payment-list">
-                <label class="payment-item">
-                    <input type="radio" name="payment" value="visa" checked>
-                    <span>Credit/Debit Card</span>
-                </label>
-                <label class="payment-item">
-                    <input type="radio" name="payment" value="paypal">
-                    <span>PayPal</span>
-                </label>
-            </div>
-        </section>
-
-        <button class="buy-btn" onclick="processOrder()">Buy Now</button>
+<!-- Step 2: Select Diamonds -->
+<section class="card">
+    <div class="step-circle">2</div>
+    <h3>Select Diamond Amount</h3>
+    <div class="button-grid">
+        <!-- These act as the selection buttons -->
+        <button type="button" class="amt-btn" onclick="selectItem(this, '5')">
+            <span class="dia">50 💎</span>
+            <span class="price">$0.15</span>
+        </button>
+        <button type="button" class="amt-btn" onclick="selectItem(this, '28')">
+            <span class="dia">28 💎</span>
+            <span class="price">$0.75</span>
+        </button>
+        <button type="button" class="amt-btn" onclick="selectItem(this, '85')">
+            <span class="dia">85 💎</span>
+            <span class="price">$2.10</span>
+        </button>
+        <button type="button" class="amt-btn" onclick="selectItem(this, '170')">
+            <span class="dia">170 💎</span>
+            <span class="price">$4.15</span>
+        </button>
     </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+</section>
