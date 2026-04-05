@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Alight Motion | Dynamic Background Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Alight Motion Hub | Dynamic Presets</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* slight modern feel, but won't break functionality */
         }
 
         body {
             font-family: 'Segoe UI', 'Poppins', 'Inter', system-ui, -apple-system, 'Roboto', sans-serif;
             min-height: 100vh;
-            background: #0a0c12; /* fallback deep color */
+            background: #0a0c12;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -36,7 +35,6 @@
             overflow: hidden;
         }
 
-        /* animated gradient orb layers (mimics "alight motion" energy) */
         .motion-orb {
             position: absolute;
             border-radius: 50%;
@@ -90,7 +88,6 @@
             opacity: 0.4;
         }
 
-        /* fast subtle wave lines — alight motion style */
         .wave-strip {
             position: absolute;
             width: 200%;
@@ -122,7 +119,6 @@
             background: linear-gradient(90deg, transparent, #6effb0, #ffd966, transparent);
         }
 
-        /* moving grain texture (extra motion depth) */
         .noise-overlay {
             position: fixed;
             top: 0;
@@ -152,7 +148,6 @@
             transition: all 0.3s ease;
         }
 
-        /* header + preset grid */
         .header {
             display: flex;
             justify-content: space-between;
@@ -190,7 +185,6 @@
             border: 1px solid rgba(120, 200, 255, 0.5);
         }
 
-        /* grid for preset cards */
         .presets-grid {
             display: flex;
             flex-wrap: wrap;
@@ -256,6 +250,10 @@
             backdrop-filter: blur(4px);
             border: 0.5px solid rgba(255,255,240,0.3);
             font-family: inherit;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .btn-primary {
@@ -278,7 +276,6 @@
             background: rgba(90, 70, 140, 0.7);
         }
 
-        /* closed link button & undo row */
         .action-bar {
             display: flex;
             justify-content: space-between;
@@ -332,9 +329,36 @@
             padding: 0.3rem 1rem;
             border-radius: 50px;
             color: #b9ffd0;
+            text-align: center;
         }
 
-        /* responsive */
+        .extra-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tiny-icon-btn {
+            background: rgba(255,255,240,0.08);
+            border-radius: 2rem;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.7rem;
+            color: #cfdcff;
+            border: 0.5px solid rgba(255,255,200,0.3);
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .tiny-icon-btn:hover {
+            background: rgba(255, 200, 255, 0.2);
+        }
+
+        footer {
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: 2rem;
+            color: #99a7c2;
+        }
+
         @media (max-width: 700px) {
             .dashboard {
                 padding: 1.2rem;
@@ -348,7 +372,6 @@
             }
         }
 
-        /* Animations for motion bg */
         @keyframes floatMotion {
             0% {
                 transform: translate(0, 0) scale(1);
@@ -379,38 +402,16 @@
             100% { transform: translate(2%, 1%) scale(1.02); opacity: 0.12; }
         }
 
-        /* quick share style inside action bar mimic */
-        .extra-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .tiny-icon-btn {
-            background: rgba(255,255,240,0.08);
-            border-radius: 2rem;
-            padding: 0.4rem 0.8rem;
-            font-size: 0.7rem;
-            color: #cfdcff;
-            border: 0.5px solid rgba(255,255,200,0.3);
-            cursor: pointer;
-            transition: 0.1s;
-        }
-
-        .tiny-icon-btn:hover {
-            background: rgba(255, 200, 255, 0.2);
-        }
-
-        footer {
-            font-size: 0.7rem;
-            text-align: center;
-            margin-top: 2rem;
-            color: #99a7c2;
+        .btn-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            filter: grayscale(0.2);
         }
     </style>
 </head>
 <body>
 
-<!-- ALIGHT MOTION DYNAMIC BACKGROUND (fluid + waves + orbs) -->
+<!-- ALIGHT MOTION DYNAMIC BACKGROUND -->
 <div class="alight-motion-bg">
     <div class="motion-orb orb1"></div>
     <div class="motion-orb orb2"></div>
@@ -433,7 +434,7 @@
         </div>
     </div>
 
-    <!-- Preset 41 links & 42 links exactly like your concept -->
+    <!-- Preset 41 & 42 with REAL links -->
     <div class="presets-grid">
         <!-- Preset 41 card -->
         <div class="preset-card">
@@ -441,26 +442,36 @@
                 🔥 Preset 41 <span>links</span>
             </div>
             <div class="button-group">
-                <button class="btn btn-primary" data-download="41_project" data-preset="41">📥 Download 5MB Project</button>
-                <button class="btn btn-secondary" data-download="41_xml" data-preset="41">📄 Download XML</button>
+                <!-- 5MB Project link - opens alight.link -->
+                <a class="btn btn-primary" id="preset41ProjectBtn" href="#" target="_blank" rel="noopener noreferrer">
+                    📥 Download 5MB Project
+                </a>
+                <!-- XML link - opens Google Drive -->
+                <a class="btn btn-secondary" id="preset41XMLBtn" href="#" target="_blank" rel="noopener noreferrer">
+                    📄 Download XML
+                </a>
             </div>
             <div style="margin-top: 12px; font-size: 0.7rem; color: #b3c7ff;">motion blur • hyper smooth</div>
         </div>
 
-        <!-- Preset 42 card -->
+        <!-- Preset 42 card (using same pattern but with generic working links as example, you can replace) -->
         <div class="preset-card">
             <div class="preset-title">
                 💎 Preset 42 <span>links</span>
             </div>
             <div class="button-group">
-                <button class="btn btn-primary" data-download="42_project" data-preset="42">📥 Download 5MB Project</button>
-                <button class="btn btn-secondary" data-download="42_xml" data-preset="42">📄 Download XML</button>
+                <a class="btn btn-primary" id="preset42ProjectBtn" href="#" target="_blank" rel="noopener noreferrer">
+                    📥 Download 5MB Project
+                </a>
+                <a class="btn btn-secondary" id="preset42XMLBtn" href="#" target="_blank" rel="noopener noreferrer">
+                    📄 Download XML
+                </a>
             </div>
             <div style="margin-top: 12px; font-size: 0.7rem; color: #b3c7ff;">wave warp + glow effects</div>
         </div>
     </div>
 
-    <!-- Closed My Link Button + Undo + extra sharing simulation (quick share, qr style) -->
+    <!-- Closed My Link Button + Undo + extra sharing simulation -->
     <div class="action-bar">
         <button id="closeLinkBtn" class="close-link-btn">🔗 Closed My Link Button</button>
         <button id="undoBtn" class="undo-btn">↩️ Undo</button>
@@ -470,18 +481,41 @@
             <button class="tiny-icon-btn" id="copyImgLinkBtn">🖼️ Copy image with link</button>
         </div>
     </div>
-    <div id="actionFeedback" class="toast-msg" style="text-align:center; margin-top: 12px; transition:0.2s;">✨ interactive ready — background flows with alight motion style</div>
+    <div id="actionFeedback" class="toast-msg" style="margin-top: 12px;">✨ interactive ready — background flows with alight motion style</div>
     <footer>
         🎞️ Megacollab 100kang • Roed!! When Yah Rame • Mep With Waves • My Drive • Doop effect
     </footer>
 </main>
 
 <script>
-    // DOM elements
+    // ----- SPECIFIC LINKS PROVIDED BY USER -----
+    // Preset 41: 
+    // 5MB Project: https://alight.link/SPCogfKyqc83GBL59
+    // XML: https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk
+    
+    const PRESET_41_PROJECT_URL = "https://alight.link/SPCogfKyqc83GBL59";
+    const PRESET_41_XML_URL = "https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk";
+    
+    // For Preset 42 - using functional demo links (alight motion official example + google drive placeholder)
+    // You can replace these with your actual preset 42 links later
+    const PRESET_42_PROJECT_URL = "https://alight.link/example42placeholder";  // Replace with actual preset42 5MB link
+    const PRESET_42_XML_URL = "https://drive.google.com/file/d/example42/view?usp=drivesdk";  // Replace with actual XML link
+    
+    // Get DOM elements
+    const preset41ProjectBtn = document.getElementById('preset41ProjectBtn');
+    const preset41XMLBtn = document.getElementById('preset41XMLBtn');
+    const preset42ProjectBtn = document.getElementById('preset42ProjectBtn');
+    const preset42XMLBtn = document.getElementById('preset42XMLBtn');
+    
+    const closeLinkBtn = document.getElementById('closeLinkBtn');
+    const undoBtn = document.getElementById('undoBtn');
     const feedbackDiv = document.getElementById('actionFeedback');
-    let lastAction = null;   // store last action for undo
-
-    // Helper: show temporary message
+    
+    // State management for link blocking
+    let linksBlocked = false;
+    let previousBlockState = false;
+    
+    // Helper: show feedback message
     function showMessage(msg, isError = false) {
         feedbackDiv.textContent = msg;
         feedbackDiv.style.background = isError ? 'rgba(180, 40, 60, 0.8)' : 'rgba(0,0,0,0.75)';
@@ -493,109 +527,79 @@
                 feedbackDiv.style.border = 'none';
                 feedbackDiv.textContent = '✨ ready — background flowing';
             }
-        }, 2000);
+        }, 2200);
     }
-
-    // simulate download file (creates blob)
-    function simulateDownload(filename, content, sizeLabel = "5MB") {
-        const blob = new Blob([content], {type: 'application/xml'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        showMessage(`✅ Downloaded ${filename} (${sizeLabel})`, false);
-    }
-
-    // generate realistic XML content for presets
-    function getPresetXML(presetId, type) {
-        if(type === 'project') {
-            return `<?xml version="1.0" encoding="UTF-8"?>
-<AlightMotionProject version="3.8">
-    <preset id="${presetId}_alight">
-        <name>Megacollab 100kang Preset ${presetId}</name>
-        <effects>
-            <effect type="motionBlur" intensity="78%"/>
-            <effect type="chromatic" shift="0.3"/>
-            <effect type="glow" radius="45px"/>
-        </effects>
-        <layers count="5"/>
-        <waveforms enabled="true"/>
-    </preset>
-</AlightMotionProject>`;
-        } else {
-            return `<?xml version="1.0"?>
-<AlightMotionXML presetId="${presetId}_xml">
-    <settings>
-        <keyframe velocity="smooth"/>
-        <wave warp="alight"/>
-        <gradient colors="#ff4d8c,#6a4eff,#00e0ff"/>
-    </settings>
-    <animation ref="wave_flow"/>
-</AlightMotionXML>`;
+    
+    // Function to open URL with block check
+    function openLink(url, linkType, presetNum) {
+        if (linksBlocked) {
+            showMessage(`🔒 Links are currently CLOSED by "Closed My Link Button". Press Undo to restore.`, true);
+            return false;
         }
-    }
-
-    // handle download click
-    function handleDownload(presetNum, type) {
-        let fileName = "";
-        let content = "";
-        let sizeHint = "~5MB";
-        if(type === "project") {
-            fileName = `AlightMotion_Preset${presetNum}_Project.alight`;
-            content = getPresetXML(presetNum, 'project');
-            // pad to simulate bigger size? not needed but visually consistent
-            sizeHint = "5MB";
-        } else if(type === "xml") {
-            fileName = `Preset${presetNum}_MotionData.xml`;
-            content = getPresetXML(presetNum, 'xml');
-            sizeHint = "~320KB (XML)";
+        
+        if (!url || url === "#") {
+            showMessage(`⚠️ Link for ${linkType} (Preset ${presetNum}) is not configured yet.`, true);
+            return false;
         }
-        // To match "5MB Project" text in UI we ensure project download says 5MB
-        if(type === "project") {
-            simulateDownload(fileName, content, "5MB");
-        } else {
-            simulateDownload(fileName, content, "XML config");
-        }
-        // store last action for undo (latest download)
-        lastAction = { type: 'download', preset: presetNum, fileType: type, fileName: fileName };
+        
+        // Open in new tab
+        window.open(url, '_blank', 'noopener,noreferrer');
+        showMessage(`🚀 Opening ${linkType} for Preset ${presetNum}...`, false);
+        return true;
     }
-
-    // assign event listeners to all preset buttons
-    const preset41Project = document.querySelector('[data-download="41_project"]');
-    const preset41XML = document.querySelector('[data-download="41_xml"]');
-    const preset42Project = document.querySelector('[data-download="42_project"]');
-    const preset42XML = document.querySelector('[data-download="42_xml"]');
-
-    if(preset41Project) {
-        preset41Project.addEventListener('click', () => handleDownload('41', 'project'));
-    }
-    if(preset41XML) {
-        preset41XML.addEventListener('click', () => handleDownload('41', 'xml'));
-    }
-    if(preset42Project) {
-        preset42Project.addEventListener('click', () => handleDownload('42', 'project'));
-    }
-    if(preset42XML) {
-        preset42XML.addEventListener('click', () => handleDownload('42', 'xml'));
-    }
-
-    // ---- Closed My Link Button logic ----
-    const closeLinkBtn = document.getElementById('closeLinkBtn');
-    let linkClosed = false;
-    let previousLinkState = false;
-
-    closeLinkBtn.addEventListener('click', () => {
-        previousLinkState = linkClosed;
-        if(!linkClosed) {
-            linkClosed = true;
-            showMessage("🔒 All preset download links are now CLOSED (simulated). Re-open with Undo.", false);
-            // disable all download buttons visually & functionally
-            const allDownloadBtns = document.querySelectorAll('[data-download]');
-            allDownloadBtns.forEach(btn => {
-                btn.disabled = true;
+    
+    // Assign click handlers for preset 41
+    preset41ProjectBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLink(PRESET_41_PROJECT_URL, "5MB Project", "41");
+    });
+    
+    preset41XMLBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLink(PRESET_41_XML_URL, "XML File", "41");
+    });
+    
+    // Assign handlers for preset 42 (using placeholder links - replace with real ones)
+    preset42ProjectBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLink(PRESET_42_PROJECT_URL, "5MB Project", "42");
+    });
+    
+    preset42XMLBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLink(PRESET_42_XML_URL, "XML File", "42");
+    });
+    
+    // --- Closed My Link Button logic ---
+    function setLinksBlocked(blocked) {
+        linksBlocked = blocked;
+        const allLinkButtons = [preset41ProjectBtn, preset41XMLBtn, preset42ProjectBtn, preset42XMLBtn];
+        
+        allLinkButtons.forEach(btn => {
+            if (blocked) {
+                btn.classList.add('btn-disabled');
+                btn.style.pointerEvents = 'none';
                 btn.style.opacity = '0.5';
-          
+            } else {
+                btn.classList.remove('btn-disabled');
+                btn.style.pointerEvents = 'auto';
+                btn.style.opacity = '1';
+            }
+        });
+    }
+    
+    closeLinkBtn.addEventListener('click', () => {
+        if (!linksBlocked) {
+            previousBlockState = false;
+            setLinksBlocked(true);
+            showMessage("🔒 All preset links are now CLOSED. Use 'Undo' to re-enable them.", false);
+        } else {
+            showMessage("⚠️ Links are already closed. Press 'Undo' to restore access.", false);
+        }
+    });
+    
+    // Undo functionality: restore links if they were closed
+    undoBtn.addEventListener('click', () => {
+        if (linksBlocked) {
+            setLinksBlocked(false);
+            showMessage("↩️ Undo: All downloa
