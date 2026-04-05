@@ -1,51 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLBB Top Up - Fast & Secure</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <div class="container">
-        <header>
-            <h1>Mobile Legends: Bang Bang</h1>
-            <p>Instant Diamond Top Up</p>
-        </header>
-
-        <!-- Step 1: User ID -->
-        <section class="card">
-            <div class="step-circle">1</div>
-            <h3>Enter User ID</h3>
-            <div class="input-group">
-                <input type="number" id="userId" placeholder="User ID" required>
-                <input type="number" id="zoneId" placeholder="(Zone ID)" required>
-            </div>
-            <small>To find your User ID, click on your avatar in the top-left corner of the game main menu.</small>
-        </section>
-<!-- Step 2: Select Diamonds -->
 <section class="card">
-    <div class="step-circle">2</div>
-    <h3>Select Diamond Amount</h3>
-    <div class="button-grid">
-        <!-- These act as the selection buttons -->
-        <button type="button" class="amt-btn" onclick="selectItem(this, '5')">
-            <span class="dia">50 💎</span>
-            <span class="price">$0.15</span>
-        </button>
-        <button type="button" class="amt-btn" onclick="selectItem(this, '28')">
-            <span class="dia">28 💎</span>
-            <span class="price">$0.75</span>
-        </button>
-        <button type="button" class="amt-btn" onclick="selectItem(this, '85')">
-            <span class="dia">85 💎</span>
-            <span class="price">$2.10</span>
-        </button>
-        <button type="button" class="amt-btn" onclick="selectItem(this, '170')">
-            <span class="dia">170 💎</span>
-            <span class="price">$4.15</span>
-        </button>
-    </div>
+    <h3>Earn Free Diamonds</h3>
+    <p>Points: <span id="userPoints">0</span> / 100</p>
+    <button class="buy-btn" onclick="showFakeAd()">Watch Ad (+5 Points)</button>
 </section>
