@@ -146,7 +146,6 @@
             padding: 1.8rem 2rem;
         }
 
-        /* Header with menu button */
         .header {
             display: flex;
             justify-content: space-between;
@@ -198,10 +197,8 @@
             height: 3px;
             background: linear-gradient(90deg, #ffb6d9, #b9a0ff);
             border-radius: 4px;
-            transition: all 0.2s;
         }
 
-        /* Dropdown menu */
         .dropdown-menu {
             position: absolute;
             top: 70px;
@@ -214,17 +211,11 @@
             width: 200px;
             overflow: hidden;
             z-index: 100;
-            transform: scaleY(0);
-            transform-origin: top;
-            opacity: 0;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            pointer-events: none;
+            display: none;
         }
 
         .dropdown-menu.show {
-            transform: scaleY(1);
-            opacity: 1;
-            pointer-events: auto;
+            display: block;
         }
 
         .menu-option {
@@ -245,11 +236,6 @@
 
         .menu-option:hover {
             background: rgba(120, 80, 200, 0.4);
-        }
-
-        .menu-option i {
-            font-style: normal;
-            font-size: 1.2rem;
         }
 
         .status-badge {
@@ -300,36 +286,36 @@
             flex-wrap: wrap;
         }
 
-        .btn {
-            border: none;
+        /* ACTUAL LINK BUTTONS - these will ALWAYS work */
+        .btn-link {
+            display: inline-block;
             padding: 0.6rem 1rem;
             border-radius: 2rem;
             font-weight: 500;
             font-size: 0.8rem;
-            cursor: pointer;
-            font-family: inherit;
             text-decoration: none;
-            display: inline-block;
             text-align: center;
             flex: 1;
+            transition: all 0.2s;
         }
 
-        .btn-primary {
+        .btn-primary-link {
             background: linear-gradient(105deg, #3a2c6b, #4e3a8e);
             color: white;
         }
 
-        .btn-primary:hover {
+        .btn-primary-link:hover {
             background: linear-gradient(105deg, #5b44a0, #6a4ec7);
+            transform: scale(0.97);
         }
 
-        .btn-secondary {
+        .btn-secondary-link {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 140, 200, 0.5);
             color: white;
         }
 
-        .btn-secondary:hover {
+        .btn-secondary-link:hover {
             background: rgba(90, 70, 140, 0.7);
         }
 
@@ -344,14 +330,18 @@
             gap: 1rem;
         }
 
-        .close-link-btn {
-            background: rgba(255, 70, 100, 0.2);
-            border: 1px solid #ff6a8a;
+        .close-link-btn, .undo-btn {
             padding: 0.7rem 1.8rem;
             border-radius: 3rem;
             font-weight: 600;
-            color: #ffe0e7;
             cursor: pointer;
+            border: none;
+        }
+
+        .close-link-btn {
+            background: rgba(255, 70, 100, 0.2);
+            border: 1px solid #ff6a8a;
+            color: #ffe0e7;
         }
 
         .close-link-btn:hover {
@@ -362,10 +352,6 @@
         .undo-btn {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(100, 200, 255, 0.5);
-            padding: 0.7rem 1.8rem;
-            border-radius: 3rem;
-            font-weight: 500;
-            cursor: pointer;
             color: #cbe4fe;
         }
 
@@ -441,13 +427,6 @@
             .title h1 {
                 font-size: 1.3rem;
             }
-            .menu-btn {
-                padding: 6px 10px;
-            }
-            .menu-line {
-                width: 22px;
-                height: 2.5px;
-            }
         }
     </style>
 </head>
@@ -472,41 +451,47 @@
         </div>
         <div style="display: flex; gap: 12px; align-items: center;">
             <div class="status-badge">🎬 motion active</div>
-            <!-- Three lines menu button -->
             <div class="menu-btn" id="menuBtn">
                 <div class="menu-line"></div>
                 <div class="menu-line"></div>
                 <div class="menu-line"></div>
             </div>
         </div>
-        <!-- Dropdown menu -->
         <div class="dropdown-menu" id="dropdownMenu">
             <div class="menu-option" id="optionTikTok">
-                <i>📱</i> View TikTok
+                <span>📱</span> View TikTok
             </div>
             <div class="menu-option" id="optionGetLinks">
-                <i>🔗</i> Get links
+                <span>🔗</span> Get links
             </div>
         </div>
     </div>
 
     <div class="presets-grid">
-        <!-- Preset 41 -->
+        <!-- Preset 41 - USING REAL <a> TAGS that always work -->
         <div class="preset-card">
             <div class="preset-title">🔥 Preset 41</div>
             <div class="button-group">
-                <button class="btn btn-primary" id="openPreset41Project">📥 Download 5MB Project</button>
-                <button class="btn btn-secondary" id="openPreset41XML">📄 Download XML</button>
+                <a href="https://alight.link/SPCogfKyqc83GBL59" target="_blank" class="btn-link btn-primary-link" id="preset41ProjectLink">
+                    📥 Download 5MB Project
+                </a>
+                <a href="https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk" target="_blank" class="btn-link btn-secondary-link" id="preset41XMLLink">
+                    📄 Download XML
+                </a>
             </div>
             <div style="margin-top: 12px; font-size: 0.7rem; color: #b3c7ff;">motion blur • hyper smooth</div>
         </div>
 
-        <!-- Preset 42 -->
+        <!-- Preset 42 - Replace these URLs with your real preset 42 links -->
         <div class="preset-card">
             <div class="preset-title">💎 Preset 42</div>
             <div class="button-group">
-                <button class="btn btn-primary" id="openPreset42Project">📥 Download 5MB Project</button>
-                <button class="btn btn-secondary" id="openPreset42XML">📄 Download XML</button>
+                <a href="#" class="btn-link btn-primary-link" id="preset42ProjectLink">
+                    📥 Download 5MB Project
+                </a>
+                <a href="#" class="btn-link btn-secondary-link" id="preset42XMLLink">
+                    📄 Download XML
+                </a>
             </div>
             <div style="margin-top: 12px; font-size: 0.7rem; color: #b3c7ff;">wave warp + glow effects</div>
         </div>
@@ -526,40 +511,39 @@
 </main>
 
 <script>
-    // ========== YOUR LINKS ==========
-    // Preset 41 - Working links
-    const PRESET_41_PROJECT = "https://alight.link/SPCogfKyqc83GBL59";
-    const PRESET_41_XML = "https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk";
-    
-    // Preset 42 - Replace these with your actual preset 42 links
-    const PRESET_42_PROJECT = "https://alight.link/GkbxTTCw1dAmdeei8";
-    const PRESET_42_XML = "https://drive.google.com/file/d/11eS-zuOOgFx49WPMf42JLUcyW6s1aL4k/view?usp=drivesdk";
-    
     // TikTok link
     const TIKTOK_URL = "https://www.tiktok.com/@doop_edit_preset";
     
-    // Get button elements
-    const btn41Project = document.getElementById('openPreset41Project');
-    const btn41XML = document.getElementById('openPreset41XML');
-    const btn42Project = document.getElementById('openPreset42Project');
-    const btn42XML = document.getElementById('openPreset42XML');
-    
-    const closeBtn = document.getElementById('closeLinkBtn');
-    const undoBtn = document.getElementById('undoBtn');
-    const feedback = document.getElementById('actionFeedback');
+    // Get preset 42 links (replace these with your actual links)
+    const PRESET_42_PROJECT = "https://alight.link/GkbxTTCw1dAmdeei8";
+    const PRESET_42_XML = "https://drive.google.com/file/d/11eS-zuOOgFx49WPMf42JLUcyW6s1aL4k/view?usp=drivesdk";
     
     // Menu elements
     const menuBtn = document.getElementById('menuBtn');
     const dropdown = document.getElementById('dropdownMenu');
     const optionTikTok = document.getElementById('optionTikTok');
     const optionGetLinks = document.getElementById('optionGetLinks');
+    const feedback = document.getElementById('actionFeedback');
+    
+    // Close/Undo elements
+    const closeBtn = document.getElementById('closeLinkBtn');
+    const undoBtn = document.getElementById('undoBtn');
+    
+    // Get all preset links
+    const preset41Project = document.getElementById('preset41ProjectLink');
+    const preset41XML = document.getElementById('preset41XMLLink');
+    const preset42Project = document.getElementById('preset42ProjectLink');
+    const preset42XML = document.getElementById('preset42XMLLink');
+    
+    // Update Preset 42 links if you have real ones
+    if (PRESET_42_PROJECT !== "https://alight.link/GkbxTTCw1dAmdeei8") {
+        preset42Project.href = PRESET_42_PROJECT;
+    }
+    if (PRESET_42_XML !== "https://drive.google.com/file/d/11eS-zuOOgFx49WPMf42JLUcyW6s1aL4k/view?usp=drivesdk") {
+        preset42XML.href = PRESET_42_XML;
+    }
     
     let linksDisabled = false;
-    
-    // Close dropdown when clicking outside
-    function closeDropdown() {
-        dropdown.classList.remove('show');
-    }
     
     function showMessage(msg, isError = false) {
         feedback.textContent = msg;
@@ -569,45 +553,26 @@
                 feedback.style.background = 'rgba(0,0,0,0.7)';
                 feedback.textContent = '✨ ready — click ☰ menu for TikTok & links';
             }
-        }, 2200);
+        }, 2000);
     }
     
-    function openLink(url, name) {
-        if (linksDisabled) {
-            showMessage(`🔒 Links are CLOSED! Click "Undo" to enable them.`, true);
-            return;
-        }
-        
-        if (!url || url.includes("example")) {
-            showMessage(`⚠️ ${name} link not configured yet. Add your Preset 42 links.`, true);
-            return;
-        }
-        
-        window.open(url, '_blank');
-        showMessage(`✅ Opening ${name}...`, false);
-    }
-    
-    // Preset 41 buttons
-    btn41Project.onclick = () => openLink(PRESET_41_PROJECT, "Preset 41 Project (5MB)");
-    btn41XML.onclick = () => openLink(PRESET_41_XML, "Preset 41 XML");
-    
-    // Preset 42 buttons
-    btn42Project.onclick = () => openLink(PRESET_42_PROJECT, "Preset 42 Project (5MB)");
-    btn42XML.onclick = () => openLink(PRESET_42_XML, "Preset 42 XML");
-    
-    // Close/Undo functionality
     function setLinksState(disabled) {
         linksDisabled = disabled;
-        const btns = [btn41Project, btn41XML, btn42Project, btn42XML];
-        btns.forEach(btn => {
+        const allLinks = [preset41Project, preset41XML, preset42Project, preset42XML];
+        allLinks.forEach(link => {
             if (disabled) {
-                btn.classList.add('btn-disabled');
+                link.style.pointerEvents = 'none';
+                link.style.opacity = '0.4';
+                link.classList.add('btn-disabled');
             } else {
-                btn.classList.remove('btn-disabled');
+                link.style.pointerEvents = 'auto';
+                link.style.opacity = '1';
+                link.classList.remove('btn-disabled');
             }
         });
     }
     
+    // Close/Undo functionality
     closeBtn.onclick = () => {
         if (!linksDisabled) {
             setLinksState(true);
@@ -626,13 +591,36 @@
         }
     };
     
-    // ========== MENU FUNCTIONALITY ==========
-    // Toggle dropdown on menu button click
+    // Menu functionality
     menuBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         dropdown.classList.toggle('show');
     });
     
-    // Close dropdown when clicking anywhere else on the page
     document.addEventListener('click', (e) => {
-        if (!menuBt
+        if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+    
+    // Option 1: View TikTok
+    optionTikTok.addEventListener('click', () => {
+        window.open(TIKTOK_URL, '_blank');
+        showMessage(`📱 Opening TikTok: @doop_edit_preset`, false);
+        dropdown.classList.remove('show');
+    });
+    
+    // Option 2: Get links - scroll to presets
+    optionGetLinks.addEventListener('click', () => {
+        document.querySelector('.presets-grid').scrollIntoView({ behavior: 'smooth' });
+        showMessage(`🔗 Main page - preset links below 👇`, false);
+        dropdown.classList.remove('show');
+    });
+    
+    // Extra features
+    document.getElementById('quickShareBtn').onclick = () => {
+        navigator.clipboard.writeText(`Alight Motion Preset 41: https://alight.link/SPCogfKyqc83GBL59\nTikTok: ${TIKTOK_URL}`);
+        showMessage("📲 Links copied to clipboard!", false);
+    };
+    
+    document.getElementById('
