@@ -215,7 +215,7 @@
         }
 
         .dropdown-menu.show {
-            display: block;
+            display: block !important;
         }
 
         .menu-option {
@@ -468,28 +468,28 @@
     </div>
 
     <div class="presets-grid">
-        <!-- Preset 41 - USING REAL <a> TAGS that always work -->
+        <!-- Preset 41 -->
         <div class="preset-card">
             <div class="preset-title">🔥 Preset 41</div>
             <div class="button-group">
-                <a href="https://alight.link/SPCogfKyqc83GBL59" target="_blank" class="btn-link btn-primary-link" id="preset41ProjectLink">
+                <a href="https://alight.link/SPCogfKyqc83GBL59" target="_blank" class="btn-link btn-primary-link">
                     📥 Download 5MB Project
                 </a>
-                <a href="https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk" target="_blank" class="btn-link btn-secondary-link" id="preset41XMLLink">
+                <a href="https://drive.google.com/file/d/1-zPnED5lJ-pKbw5f2ExoySjBzK21Whdn/view?usp=drivesdk" target="_blank" class="btn-link btn-secondary-link">
                     📄 Download XML
                 </a>
             </div>
             <div style="margin-top: 12px; font-size: 0.7rem; color: #b3c7ff;">motion blur • hyper smooth</div>
         </div>
 
-        <!-- Preset 42 - Replace these URLs with your real preset 42 links -->
+        <!-- Preset 42 - NOW WITH YOUR REAL LINKS -->
         <div class="preset-card">
             <div class="preset-title">💎 Preset 42</div>
             <div class="button-group">
-                <a href="https://alight.link/GkbxTTCw1dAmdeei8" class="btn-link btn-primary-link" id="preset42ProjectLink">
+                <a href="https://alight.link/aVWKBW2Gf7G81qpZA" target="_blank" class="btn-link btn-primary-link">
                     📥 Download 5MB Project
                 </a>
-                <a href="https://drive.google.com/file/d/11eS-zuOOgFx49WPMf42JLUcyW6s1aL4k/view?usp=drivesdk" target="_blank" class="btn-link btn-secondary-link" id="preset42XMLLink">
+                <a href="https://drive.google.com/file/d/11eS-zuOOgFx49WPMf42JLUcyW6s1aL4k/view?usp=drivesdk" target="_blank" class="btn-link btn-secondary-link">
                     📄 Download XML
                 </a>
             </div>
@@ -506,42 +506,25 @@
             <button class="tiny-icon-btn" id="copyImgLinkBtn">🖼️ Copy image with link</button>
         </div>
     </div>
-    <div id="actionFeedback" class="toast-msg">✨ ready — click ☰ menu for TikTok & links</div>
-    <footer>🎞️ tiktok • doop_edit_preset</footer>
+    <div id="actionFeedback" class="toast-msg">✨ ready — click the ☰ menu (3 lines) for TikTok & options</div>
+    <footer>🎞️ Tiktok • doop_edit_preset</footer>
 </main>
 
 <script>
     // TikTok link
     const TIKTOK_URL = "https://www.tiktok.com/@doop_edit_preset";
     
-    // Get preset 42 links (replace these with your actual links)
-    const PRESET_42_PROJECT = "https://alight.link/GkbxTTCw1dAmdeei8";
-    const PRESET_42_XML = "https://drive.google.com/file/d/11eS-zuOOgFx49WPMf42JLUcyW6s1aL4k/view?usp=drivesdk";
-    
-    // Menu elements
+    // Get elements
     const menuBtn = document.getElementById('menuBtn');
     const dropdown = document.getElementById('dropdownMenu');
     const optionTikTok = document.getElementById('optionTikTok');
     const optionGetLinks = document.getElementById('optionGetLinks');
     const feedback = document.getElementById('actionFeedback');
-    
-    // Close/Undo elements
     const closeBtn = document.getElementById('closeLinkBtn');
     const undoBtn = document.getElementById('undoBtn');
     
-    // Get all preset links
-    const preset41Project = document.getElementById('preset41ProjectLink');
-    const preset41XML = document.getElementById('preset41XMLLink');
-    const preset42Project = document.getElementById('preset42ProjectLink');
-    const preset42XML = document.getElementById('preset42XMLLink');
-    
-    // Update Preset 42 links if you have real ones
-    if (PRESET_42_PROJECT !== "https://alight.link/GkbxTTCw1dAmdeei8") {
-        preset42Project.href = PRESET_42_PROJECT;
-    }
-    if (PRESET_42_XML !== "https://drive.google.com/file/d/11eS-zuOOgFx49WPMf42JLUcyW6s1aL4k/view?usp=drivesdk") {
-        preset42XML.href = PRESET_42_XML;
-    }
+    // Get all preset links for close/undo functionality
+    const allPresetLinks = document.querySelectorAll('.btn-link');
     
     let linksDisabled = false;
     
@@ -551,76 +534,88 @@
         setTimeout(() => {
             if (feedback.textContent === msg) {
                 feedback.style.background = 'rgba(0,0,0,0.7)';
-                feedback.textContent = '✨ ready — click ☰ menu for TikTok & links';
+                feedback.textContent = '✨ ready — click the ☰ menu (3 lines) for TikTok & options';
             }
         }, 2000);
     }
     
     function setLinksState(disabled) {
         linksDisabled = disabled;
-        const allLinks = [preset41Project, preset41XML, preset42Project, preset42XML];
-        allLinks.forEach(link => {
+        allPresetLinks.forEach(link => {
             if (disabled) {
                 link.style.pointerEvents = 'none';
                 link.style.opacity = '0.4';
-                link.classList.add('btn-disabled');
             } else {
                 link.style.pointerEvents = 'auto';
                 link.style.opacity = '1';
-                link.classList.remove('btn-disabled');
             }
         });
     }
     
-    // Close/Undo functionality
-    closeBtn.onclick = () => {
-        if (!linksDisabled) {
-            setLinksState(true);
-            showMessage("🔒 All links are now CLOSED. Press Undo to re-enable.", false);
-        } else {
-            showMessage("⚠️ Links are already closed!", true);
-        }
-    };
-    
-    undoBtn.onclick = () => {
-        if (linksDisabled) {
-            setLinksState(false);
-            showMessage("↩️ Links restored! You can now open presets.", false);
-        } else {
-            showMessage("✨ No links were closed. Nothing to undo.", false);
-        }
-    };
-    
-    // Menu functionality
-    menuBtn.addEventListener('click', (e) => {
+    // MENU BUTTON FUNCTIONALITY - FIXED
+    menuBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         dropdown.classList.toggle('show');
+        console.log('Menu clicked - dropdown toggled'); // For debugging
     });
     
-    document.addEventListener('click', (e) => {
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
         if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
             dropdown.classList.remove('show');
         }
     });
     
     // Option 1: View TikTok
-    optionTikTok.addEventListener('click', () => {
+    optionTikTok.addEventListener('click', function(e) {
+        e.stopPropagation();
         window.open(TIKTOK_URL, '_blank');
         showMessage(`📱 Opening TikTok: @doop_edit_preset`, false);
         dropdown.classList.remove('show');
     });
     
-    // Option 2: Get links - scroll to presets
-    optionGetLinks.addEventListener('click', () => {
-        document.querySelector('.presets-grid').scrollIntoView({ behavior: 'smooth' });
-        showMessage(`🔗 Main page - preset links below 👇`, false);
+    // Option 2: Get links - scroll to presets (main page)
+    optionGetLinks.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const presetsSection = document.querySelector('.presets-grid');
+        if (presetsSection) {
+            presetsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            showMessage(`🔗 Main page - preset links below 👇`, false);
+        }
         dropdown.classList.remove('show');
     });
     
-    // Extra features
-    document.getElementById('quickShareBtn').onclick = () => {
-        navigator.clipboard.writeText(`Alight Motion Preset 41: https://alight.link/SPCogfKyqc83GBL59\nTikTok: ${TIKTOK_URL}`);
-        showMessage("📲 Links copied to clipboard!", false);
-    };
+    // Close/Undo functionality
+    closeBtn.addEventListener('click', function() {
+        if (!linksDisabled) {
+            setLinksState(true);
+            showMessage("🔒 All links are now CLOSED. Press Undo to re-enable.", false);
+        } else {
+            showMessage("⚠️ Links are already closed!", true);
+        }
+    });
     
-    document.getElementById('
+    undoBtn.addEventListener('click', function() {
+        if (linksDisabled) {
+            setLinksState(false);
+            showMessage("↩️ Links restored! You can now open presets.", false);
+        } else {
+            showMessage("✨ No links were closed. Nothing to undo.", false);
+        }
+    });
+    
+    // Extra features
+    document.getElementById('quickShareBtn').addEventListener('click', function() {
+        const presetLinks = "Preset 41: https://alight.link/SPCogfKyqc83GBL59\nPreset 42: https://alight.link/aVWKBW2Gf7G81qpZA\nTikTok: " + TIKTOK_URL;
+        navigator.clipboard.writeText(presetLinks);
+        showMessage("📲 All preset links copied!", false);
+    });
+    
+    document.getElementById('qrMockBtn').addEventListener('click', function() {
+        const qrData = "Alight Motion Presets\n41: https://alight.link/SPCogfKyqc83GBL59\n42: https://alight.link/aVWKBW2Gf7G81qpZA";
+        navigator.clipboard.writeText(qrData);
+        showMessage("📱 QR data copied", false);
+    });
+    
+    document.getElementById('copyImgLinkBtn').addEventListener('click', function() {
+        navigator.clipboard.writeText(`🎬 Alight Motion Presets\n
